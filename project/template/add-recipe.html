@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+{% load static %}
+
+<head>
+	<title>Cook Note - Food Recipes HTML Template</title>
+	<meta name="author" content="Nile-Theme">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="keywords" content="recipes food, recipes , chinese food, italian food">
+	<meta name="description" content="Cook Note - Food & Recipes Food Template">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- google fonts -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800%7CPoppins:100,200,300i,300,400,700,400i,500%7CDancing+Script:700"
+		rel="stylesheet">
+	<!-- animate -->
+	<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}" />
+	<!-- owl Carousel assets -->
+	<link href="{% static 'assets/css/owl.carousel.css' %}" rel="stylesheet">
+	<link href="{% static 'assets/css/owl.theme.css' %}" rel="stylesheet">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<!-- hover anmation -->
+	<link rel="stylesheet" href="{% static 'assets/css/hover-min.css' %}">
+	<!-- flag icon -->
+	<link rel="stylesheet" href="{% static 'assets/css/flag-icon.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+	<!-- colors -->
+	<link rel="stylesheet" href="{% static 'assets/css/colors/main.css'%}">
+	<!-- elegant icon -->
+	<link rel="stylesheet" href="{% static 'assets/css/elegant_icon.css'%}">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+
+</head>
+
+<body>
+
+	<header class="background-main-color">
+		<div class="container">
+			<div class="header-output">
+				<div class="header-in">
+
+					<div class="row">
+						<div class="col-lg-2 col-md-12">
+							<a id="logo"  class="d-inline-block margin-tb-5px"><img src="{% static 'assets/img/logo-small.png' %}" alt=""></a>
+							<a class="mobile-toggle padding-13px background-main-color" href="#"><i class="fas fa-bars"></i></a>
+						</div>
+						<div class="col-lg-8 col-md-12 position-inherit">
+
+							<ul id="menu-main"
+								class="white-link dropdown-dark text-lg-center nav-menu link-padding-tb-17px">
+								<li class="has-dropdown"><a href="{% url 'home' %}">Home</a>
+
+								</li>
+								<li class="has-dropdown"><a href="#">Recipes</a>
+									<ul class="sub-menu text-left">
+										<li><a href="{% url 'h_page' %}">Healthy Food</a></li>
+										<li><a href="{% url 'e_page' %}">Egg Recipes</a></li>
+										<li><a href="{% url 'c_page' %}">Chicken Recipes</a></li>
+										<li><a href="{% url 'v_page' %}">Veg Recipes</a></li>
+
+									</ul>
+								</li>
+								<li class="has-dropdown"><a href="{% url 'add_recipe' %}">Add Recipe</a>
+									
+								</li>
+								
+							</ul>
+
+						</div>
+						<div class="col-lg-2 col-md-12 d-none d-lg-block">
+							<hr class="margin-bottom-0px d-block d-sm-none">
+							<a href="{% url 'add_recipe' %}"
+								class="text-white ba-2 box-shadow float-right padding-lr-23px padding-tb-15px text-extra-large"><i
+									class="fas fa-plus"></i></a>
+							
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- // Header  -->
+
+
+	<div id="page-title" class="padding-tb-30px gradient-white">
+		<div class="container">
+			<h1 class="font-weight-300">Add Recipe</h1>
+		</div>
+	</div>
+	<form method="post" action="{% url 'add_recipe' %}">
+	{% csrf_token %}
+	<div class="container">
+
+		<div class="margin-tb-45px full-width">
+			<h4 class="padding-lr-30px padding-tb-20px background-white box-shadow border-radius-10"><i
+					class="far fa-list-alt margin-right-10px text-main-color"></i>Basic Informations</h4>
+			<div class="padding-30px padding-bottom-30px background-white border-radius-10">
+					<div class="form-group margin-bottom-20px">
+						<label><i class="far fa-list-alt margin-right-10px"></i> Recipe Name</label>
+						<input type="text" name="name" class="form-control form-control-sm" id="ListingTitle"
+							placeholder="">
+					</div>
+					<div class="form-group margin-bottom-20px">
+						<div class="row">
+							<div class="col-md-6">
+								<label><i class="far fa-folder-open margin-right-10px"></i> Category</label>
+								<select class="form-control form-control-sm" name="category">
+									<option value="Healthy_food">Healthy Food</option>
+									<option value="Veg_Recipe">Veg Recipes</option>
+									<option value="Egg" >Egg Recipes</option>
+									<option value="Chicken">Chicken Recipes</option>
+								</select>
+							</div>
+
+							<div class="col-md-6 margin-bottom-20px">
+								<label><i class="far fa-list-alt margin-right-10px"></i> Cooking Time</label>
+								<input type="text" class="form-control form-control-sm" name="time"
+									placeholder="Cooking Time">
+							</div>
+
+
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<div class="margin-bottom-45px full-width">
+			<h4 class="padding-lr-30px padding-tb-20px background-white box-shadow border-radius-10"><i
+					class="far fa-list-alt margin-right-10px text-main-color"></i>Ingredients</h4>
+			<div class="padding-30px padding-bottom-30px background-white border-radius-10">
+				<div class="margin-bottom-20px">
+					<textarea class="form-control" name="ing" id="exampleTextarea" rows="8"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="margin-bottom-45px full-width">
+			<h4 class="padding-lr-30px padding-tb-20px background-white box-shadow border-radius-10"><i
+					class="far fa-list-alt margin-right-10px text-main-color"></i>Cooking Process</h4>
+			<div class="padding-30px padding-bottom-30px background-white border-radius-10">
+				<div class="margin-bottom-20px">
+					<textarea class="form-control" id="exampleTextarea" name="ins" rows="8"></textarea>
+				</div>
+				<h4 class="padding-lr-30px padding-tb-20px background-white box-shadow border-radius-10"><i
+						class="far fa-list-alt margin-right-10px text-main-color"></i>About Recipe</h4>
+				<div class="padding-30px padding-bottom-30px background-white border-radius-10">
+					<div class="margin-bottom-20px">
+						<textarea class="form-control" id="exampleTextarea" name="about" rows="8"></textarea>
+					</div>
+					<div class="form-group margin-bottom-20px">
+						<label><i class="far fa-list-alt margin-right-10px"></i> Origin</label>
+						<input type="text" name="origin" class="form-control form-control-sm" id="ListingTitle"
+							placeholder="">
+					</div>
+					<div class="form-group margin-bottom-20px">
+						<label><i class="far fa-list-alt margin-right-10px"></i> Servings</label>
+						<input type="number" name="servings" class="form-control form-control-sm" id="ListingTitle"
+							placeholder="">
+					</div>
+					<div class="form-group margin-bottom-20px">
+						<label><i class="far fa-list-alt margin-right-10px"></i>Author Name</label>
+						<input type="text" name="author" class="form-control form-control-sm" id="ListingTitle"
+							placeholder="">
+					</div>
+					<div class="row">
+						<div class="col-md-6 margin-bottom-20px">
+							<label><i class="far fa-images margin-right-10px"></i> Image URL</label>
+							<input type="file" class="form-control form-control-sm" name="img"
+								placeholder="http://www.">
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<button class="btn btn-md btn-primary full-width">Add recipe</button>
+		</div>
+		</form>
+
+		
+
+		<div class="padding-tb-10px background-main-color">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="text-white margin-tb-15px text-center text-lg-left">
+							Cook Note | @2017 All copy rights reserved
+						</div>
+					</div>
+					<div class="col-md-6">
+						<ul class="list-inline text-lg-right text-center margin-lr-0px margin-tb-15px text-white">
+							<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i
+										class="fab fa-facebook-f"></i></a></li>
+							<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i
+										class="fab fa-youtube"></i></a></li>
+							<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i
+										class="fab fa-linkedin"></i></a></li>
+							<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i
+										class="fab fa-google-plus"></i></a></li>
+							<li class="list-inline-item margin-lr-8px"><a class="facebook" href="#"><i
+										class="fab fa-twitter"></i></a></li>
+							<li class="list-inline-item margin-lr-8px"><a class="rss" href="#"><i class="fa fa-rss"
+										aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+		<script src="{% static 'assets/js/sticky-sidebar.js' %}"></script>
+		<script src="{% static 'assets/js/YouTubePopUp.jquery.js' %}"></script>
+		<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+		<script src="{% static 'assets/js/imagesloaded.min.js' %}"></script>
+		<script src="{% static 'assets/js/masonry.min.js' %}"></script>
+		<script src="{% static 'assets/js/wow.min.js' %}"></script>
+		<script src="{% static 'assets/js/custom.js' %}"></script>
+		<script src="{% static 'assets/js/popper.min.js' %}"></script>
+		<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
